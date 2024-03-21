@@ -1,4 +1,6 @@
 ---
+import {db, User} from 'astro:db';
+const users = await db.select().from(User);
 
 ---
 
@@ -13,5 +15,6 @@
 	<body>
 		<h1>Astro</h1>
 		<div>Test Test Test</div>
+		<div>{users.map((user) => <div>{user.email} - {user.userId}</div>)}</div>
 	</body>
 </html>
